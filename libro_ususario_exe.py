@@ -8,5 +8,5 @@ for libro in libros_usuarios:
 
 ## id_libro e id_usuario para insertar relación libro-usuario
 id_libro = input("ID_LIBRO: ")
-id_libro_usuario= input("ID_LIBRO_USUARIO: ")
+##id_libro_usuario= input("ID_LIBRO_USUARIO: ")
 insertar_libro_usuario(id_libro, id_usuario)
