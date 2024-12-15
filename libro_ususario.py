@@ -30,9 +30,9 @@ def listar_libros_por_usuario(id_usuario):
     conexion = obtener_conexion()
     cursor = conexion.cursor(dictionary=True)
     consulta = """
-        SELECT l.id AS id_libro, l.titulo, l.fechaPublicacion, l.ventas
+        SELECT l.id_libro AS id_libro, l.titulo, l.fecha_publicacion, l.ventas
         FROM libro_usuario lu
-        INNER JOIN libro l ON lu.id_libro = l.id
+        INNER JOIN libro l ON lu.id_libro = l.id_libro
         WHERE lu.id_usuario = %s
     """
     cursor.execute(consulta, (id_usuario,))
@@ -40,6 +40,7 @@ def listar_libros_por_usuario(id_usuario):
     cursor.close()
     conexion.close()
     return libros
+
 
 # Listar todos los usuarios asociados a un libro
 def listar_usuarios_por_libro(id_libro):
