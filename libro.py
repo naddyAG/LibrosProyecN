@@ -3,6 +3,7 @@ import mysql.connector
 from mysql.connector import Error
 import streamlit as st
 from conexion import obtener_conexion
+import pandas as pd 
 
 #Insertar Libro
 def insertar_libro(titulo, fecha_publicacion, ventas, stock, id_autor):
@@ -87,11 +88,16 @@ def main():
         conexion= obtener_conexion()
         libros= listar_libros()
         if libros:
-            st.write(libros)
+           libros_df= pd.DataFrame(libros)
+           st.write(libros_df)
         else:
             st.info("No hay libros")
+    elif opcion== "Registrar Libros":
+        st.subheader("Registras Nuevo Libro")
+        with st.form(Key="form_registro"):
+   
     #return 0
 
 # ejecutar APP
-if __name__ == "_main_":
+if __name__== "_main_":
     main()
