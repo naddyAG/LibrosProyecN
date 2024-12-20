@@ -1,3 +1,7 @@
+#from conn import obtener_conexion
+import mysql.connector
+from mysql.connector import Error
+import streamlit as st
 from conexion import obtener_conexion
 
 #Insertar Libro
@@ -57,17 +61,37 @@ def listar_libros():
     conexion= obtener_conexion()
     cursor = conexion.cursor(dictionary=True)
     consulta="""
-Select l.id_libro,
-		l.titulo,
-        l.fecha_publicacion,
-        l.ventas,
-        l.stock,
-        a.seudonimo as autor_libro
-	from libro l 
-inner join autor a on a.id_autor=l.id_autor;"""
+    Select l.id_libro,
+            l.titulo,
+            l.fecha_publicacion,
+            l.ventas,
+            l.stock,
+            concat(a.nombre ,' ', a.apellido) as autor_libro
+        from libro l 
+    inner join autor a on a.id_autor=l.id_autor;"""
     cursor.execute(consulta)
     libros= cursor.fetchall()
     cursor.close()
     conexion.close()
     return libros
 
+
+
+def main():
+    st.title("Gestion de Libros")
+    menu =["Ver Libros", "Registrar Libros", "Editar Libros", "Eliminar Libro"]
+    opcion = st.sidebar.selectbox("Menu", menu)
+    if opcion == "Ver Libros":
+        st.subheader("Lista de Libros")
+
+        conexion= obtener_conexion()
+        libros= listar_libros()
+        if libros:
+            st.write(libros)
+        else:
+            st.info("No hay libros")
+    #return 0
+
+# ejecutar APP
+if __name__ == "_main_":
+    main()
