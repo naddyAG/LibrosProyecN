@@ -1,4 +1,4 @@
-from usuario import listar_usuarios,insertar_usuario
+from pages.usuario import listar_usuarios,insertar_usuario
 usuarios=listar_usuarios()
 print (usuarios)
 

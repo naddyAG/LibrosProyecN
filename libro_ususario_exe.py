@@ -1,4 +1,4 @@
-from libro_ususario import listar_libros_por_usuario, insertar_libro_usuario
+from libro_ususariobcp import listar_libros_por_usuario, insertar_libro_usuario
 
 ## Proporciona el id_usuario 
 id_usuario = input("ID_USUARIO: ")

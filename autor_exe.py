@@ -1,4 +1,4 @@
-from autor import listar_autores,insertar_autor
+from pages.autor import listar_autores,insertar_autor
 autores=listar_autores()
 print (autores)
 

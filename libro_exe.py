@@ -1,4 +1,4 @@
-from libro import insertar_libro, modificar_libro, eliminar_libro,listar_libros
+from pages.libro import insertar_libro, modificar_libro, eliminar_libro,listar_libros
 
 #titulo=input("Titulo Libro")
 #fecha_publicacion= input("Fecha Publicacion (YYYY-MM-DD):")
